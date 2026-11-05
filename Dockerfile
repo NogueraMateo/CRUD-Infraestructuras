@@ -14,4 +14,4 @@ RUN uv sync --locked --no-dev
 COPY . .
 
 # Se espefica al servidor que escuche en todas las intefaces de red con 0.0.0.0 y el puerto 8000
-CMD ["uv", "run", "fastapi", "run", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uv", "run", "fastapi", "dev", "--reload", "--host", "0.0.0.0", "--port", "8000"]
