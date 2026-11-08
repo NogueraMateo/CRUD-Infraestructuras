@@ -16,7 +16,11 @@ COPY src ./src
 # Crear usuario no-root por seguridad
 RUN groupadd -r app && useradd -r -g app app
 
+ENV UV_CACHE_DIR=/tmp/uv-cache
+
+USER app
+
 EXPOSE 8000
 
 # Se espefica al servidor que escuche en todas las intefaces de red con 0.0.0.0 y el puerto 8000
-CMD ["uv", "run", "--no-dev", "fastapi", "run", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uv", "run", "--no-sync", "--no-dev", "fastapi", "run", "--host", "0.0.0.0", "--port", "8000"]
